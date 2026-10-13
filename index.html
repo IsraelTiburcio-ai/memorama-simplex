@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Memorama Simplex · Encuentra la pareja correcta</title>
+  <meta name="description" content="Memorama de forma canónica y equivalencias del método simplex (Gimnasio 3). Relaciona cada concepto con su definición. 8 parejas por partida.">
+  <meta name="theme-color" content="#081527">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al juego</a>
+
+  <div class="app" id="app">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/icon.svg" width="32" height="32" alt="" aria-hidden="true">
+        <p class="brand-name"><strong>Memorama</strong> Simplex</p>
+      </div>
+      <div class="top-actions">
+        <button id="btn-mute" class="icon-btn" type="button" aria-label="Silenciar sonido" aria-pressed="false">
+          <svg class="i-on" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 8.8a4.5 4.5 0 0 1 0 6.4M18.3 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="i-off" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5m0-5l-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button id="btn-restart" class="icon-btn" type="button" aria-label="Nueva partida" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 12a8 8 0 1 1-2.34-5.66" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section id="screen-start" class="screen" aria-labelledby="title">
+        <div class="hero">
+          <p class="eyebrow">Gimnasio 3 · Optimización I</p>
+          <h1 id="title" class="title">MEMORAMA SIMPLEX</h1>
+          <p class="subtitle">Encuentra la pareja correcta</p>
+          <p class="lead">Relaciona cada concepto con su definición o equivalencia del método simplex. Cada partida tiene 8 parejas y dura entre 1 y 2 minutos.</p>
+
+          <div class="example" aria-label="Ejemplo de pareja">
+            <div class="ex-card"><span>Variable de holgura</span></div>
+            <span class="ex-arrow" aria-hidden="true">↔</span>
+            <div class="ex-card"><span>Se agrega a una restricción ≤ para convertirla en igualdad</span></div>
+          </div>
+
+          <ul class="rules">
+            <li>Voltea dos cartas. Si forman pareja, se quedan a la vista.</li>
+            <li>Si no forman pareja, se vuelven a ocultar.</li>
+            <li>Al final verás tu tiempo, errores y porcentaje de aciertos.</li>
+          </ul>
+
+          <button id="btn-play" class="btn btn-primary btn-lg" type="button">Jugar</button>
+
+          <ul class="topics" aria-label="Temas que incluye el banco">
+            <li style="--c:#1d4ed8">Forma canónica</li>
+            <li style="--c:#7c3aed">Máx ↔ mín</li>
+            <li style="--c:#0f766e">Desigualdades</li>
+            <li style="--c:#4338ca">Igualdad</li>
+            <li style="--c:#15803d">Holgura</li>
+            <li style="--c:#b45309">Exceso</li>
+            <li style="--c:#be185d">No restringida</li>
+            <li style="--c:#9a3412">Artificial</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="screen-game" class="screen" aria-label="Partida en curso" hidden>
+        <h2 class="sr-only">Partida</h2>
+        <div class="game">
+          <div class="hud">
+            <dl class="stats">
+              <div class="stat"><dt>Tiempo</dt><dd id="stat-time">0:00</dd></div>
+              <div class="stat"><dt>Parejas</dt><dd id="stat-pairs">0/8</dd></div>
+              <div class="stat"><dt>Intentos</dt><dd id="stat-attempts">0</dd></div>
+              <div class="stat"><dt>Precisión</dt><dd id="stat-accuracy">—</dd></div>
+            </dl>
+            <p id="feedback" class="feedback is-info" role="status" aria-live="polite"></p>
+            <p class="hint">Teclado: Tab para moverte · Enter o Espacio para voltear · Flechas para cambiar de carta · Esc cierra el resumen</p>
+          </div>
+          <div class="board-wrap">
+            <div id="board" class="board" role="group" aria-label="Tablero de 16 cartas"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Basado en el cuadernillo <em>Gimnasio 3. Método Simplex</em>: 3.1 Forma canónica (pp. 4-5), 3.2 Equivalencias (pp. 6-8) y variable artificial (pp. 25-26).</p>
+    </footer>
+  </div>
+
+  <div id="end" class="overlay" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="end-title" aria-describedby="end-lead">
+      <h2 id="end-title">¡Partida completada!</h2>
+      <p id="end-lead" class="end-lead"></p>
+      <dl class="end-stats">
+        <div><dt>Tiempo total</dt><dd id="end-time">0:00</dd></div>
+        <div><dt>Errores</dt><dd id="end-errors">0</dd></div>
+        <div><dt>Porcentaje de aciertos</dt><dd id="end-accuracy">0%</dd></div>
+        <div><dt>Intentos</dt><dd id="end-attempts">0</dd></div>
+      </dl>
+      <h3 class="recap-title">Repaso de esta partida</h3>
+      <ul id="end-recap" class="recap"></ul>
+      <div class="end-actions">
+        <button id="btn-close" class="btn btn-ghost" type="button">Ver tablero</button>
+        <button id="btn-again" class="btn btn-primary" type="button">Volver a jugar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
