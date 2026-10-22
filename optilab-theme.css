@@ -1,0 +1,32 @@
+/* Only applied after a validated OptiLab handshake. Standalone styles stay intact. */
+html.optilab-embedded {
+  --bg-0: #f9f5e9;
+  --ink: #243b40;
+  --ink-muted: #56614f;
+  --paper: #fffbed;
+  --paper-ink: #243b40;
+  --amber: #315e4e;
+  --amber-hover: #254737;
+  --amber-ink: #fff8e4;
+  --focus: #a25038;
+  --stroke-dark: #bdcabb;
+}
+.optilab-embedded body { background-image: none; }
+.optilab-embedded .title, .optilab-embedded .stat dd { color: var(--ink); }
+.optilab-embedded .btn { border-radius: 7px; }
+.optilab-embedded .btn-primary { box-shadow: 0 4px 0 #1d3c32; }
+.optilab-embedded .icon-btn, .optilab-embedded .stat, .optilab-embedded .topics li { background: #e8eddf; }
+.optilab-embedded .icon-btn[aria-pressed="true"] { border-color: #315e4e; background: #dce7d5; }
+.optilab-embedded .face-back { background: #527b8c; background-image: none; border: 2px solid #304e57; box-shadow: 0 4px 0 #243b4020; }
+.optilab-embedded .ex-card { border: 1px solid #bdcabb; box-shadow: 0 4px 0 #243b4010; }
+.optilab-embedded .dialog { background: #fffbed; border: 2px solid #527b8c; border-radius: 12px; }
+.optilab-embedded .end-stats>div, .optilab-embedded .recap li { background: #f9f5e9; border-color: #d4d5be; }
+.optilab-embedded .dialog .btn-ghost { color: #243b40; border: 1px solid #527b8c; }
+.optilab-embedded .card-tag { position: static; margin-bottom: 7px; border-radius: 5px; width: 100%; }
+.optilab-embedded .card.is-matched .face-front { padding-top: 8px; padding-bottom: 30px; }
+@media (max-width: 400px) {
+  .optilab-embedded .brand-name { font-size: 11px; letter-spacing: .04em; }
+  .optilab-embedded .top-actions { gap: 5px; }
+  .optilab-embedded .brand { gap: 5px; }
+  .optilab-embedded .brand img { width: 25px; height: 25px; }
+}

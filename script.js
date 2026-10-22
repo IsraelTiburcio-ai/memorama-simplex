@@ -315,6 +315,15 @@
   function finish(g) {
     g.finished = true;
     pauseClock(g);
+    if (window.OptiLabBridge) window.OptiLabBridge.complete({
+      completed: true,
+      matchedPairs: g.matched,
+      totalPairs: g.pairs.length,
+      attempts: g.attempts,
+      errors: g.errors,
+      elapsedMs: Math.round(g.elapsed),
+      accuracy: Math.round((g.matched / g.attempts) * 100)
+    });
     clearInterval(g.ticker);
     renderTime(g);
     Sound.play("win");
@@ -328,6 +337,7 @@
 
   function startClock(g) {
     g.started = true;
+    if (window.OptiLabBridge) window.OptiLabBridge.start();
     resumeClock(g);
   }
 
@@ -506,7 +516,7 @@
       return;
     }
     if (e.key === "Tab") {
-      var order = [els.close, els.again];
+      var order = [els.recap, els.close, els.again];
       var idx = order.indexOf(document.activeElement);
       var next;
       if (e.shiftKey) next = idx <= 0 ? order.length - 1 : idx - 1;

@@ -8,6 +8,7 @@
   <meta name="theme-color" content="#081527">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="optilab-theme.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Ir al juego</a>
@@ -100,7 +101,7 @@
         <div><dt>Intentos</dt><dd id="end-attempts">0</dd></div>
       </dl>
       <h3 class="recap-title">Repaso de esta partida</h3>
-      <ul id="end-recap" class="recap"></ul>
+      <ul id="end-recap" class="recap" tabindex="0" aria-label="Repaso de las parejas de esta partida"></ul>
       <div class="end-actions">
         <button id="btn-close" class="btn btn-ghost" type="button">Ver tablero</button>
         <button id="btn-again" class="btn btn-primary" type="button">Volver a jugar</button>
@@ -109,6 +110,7 @@
   </div>
 
   <script src="data.js"></script>
-  <script src="script.js"></script>
+  <script src="optilab-bridge.js"></script>
+  <script src="script.js?v=optilab-v1"></script>
 </body>
 </html>
