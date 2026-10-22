@@ -24,6 +24,24 @@ html.optilab-embedded {
 .optilab-embedded .dialog .btn-ghost { color: #243b40; border: 1px solid #527b8c; }
 .optilab-embedded .card-tag { position: static; margin-bottom: 7px; border-radius: 5px; width: 100%; }
 .optilab-embedded .card.is-matched .face-front { padding-top: 8px; padding-bottom: 30px; }
+/* Respond to the iframe's own viewport; resizing the host never recreates a game. */
+.optilab-embedded .app { max-width: none; }
+.optilab-embedded .game { max-width: none; }
+.optilab-embedded .board-wrap { margin-inline: auto; }
+@media (min-width: 600px) and (orientation: portrait) {
+  .optilab-embedded .board-wrap { max-width: 880px; }
+  .optilab-embedded .face-front,
+  .optilab-embedded .face-back { min-height: clamp(160px, 18dvh, 210px); }
+}
+@media (min-width: 900px) and (orientation: landscape) {
+  .optilab-embedded .game {
+    grid-template-columns: minmax(220px, 270px) minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 44px);
+  }
+  .optilab-embedded .board-wrap { width: min(100%, calc((100dvh - 140px) * 1.12)); }
+  .optilab-embedded .face-front,
+  .optilab-embedded .face-back { min-height: clamp(150px, calc((100dvh - 170px) / 4), 200px); }
+}
 @media (max-width: 400px) {
   .optilab-embedded .brand-name { font-size: 11px; letter-spacing: .04em; }
   .optilab-embedded .top-actions { gap: 5px; }
