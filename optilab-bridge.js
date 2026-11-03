@@ -14,7 +14,8 @@
     try {
       var ref = new URL(document.referrer);
       var host = new URL(hostOrigin);
-      var production = host.origin === 'https://israeltiburcio-ai.github.io' && ref.pathname.startsWith('/optilab/');
+      var production = (host.origin === 'https://israeltiburcio-ai.github.io' && ref.pathname.startsWith('/optilab/')) ||
+        (host.origin === 'https://optilab.club' && ref.pathname === '/');
       var local = ['localhost', '127.0.0.1'].includes(host.hostname) && host.protocol === 'http:';
       return parent !== window && uuid.test(session || '') && ref.origin === host.origin && (production || local);
     } catch (_) { return false; }
